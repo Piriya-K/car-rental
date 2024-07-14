@@ -8,6 +8,7 @@ export default async function Home() {
   return (
     <main>
       <h1>Homepage</h1>
+      <h2>Hello, {session?.user?.email}</h2>
     </main>
   );
 }
