@@ -1,14 +1,14 @@
-import Image from "next/image";
+"use clients";
 import { auth } from "../../auth";
+import Hero from "./components/Home/Hero";
 
 export default async function Home() {
   const session = await auth();
   console.log(session);
 
   return (
-    <main>
-      <h1>Homepage</h1>
-      <h2>Hello, {session?.user?.email}</h2>
-    </main>
+    <div className="p-5 sm:px-10 md:px-20">
+      <Hero />
+    </div>
   );
 }
