@@ -24,8 +24,8 @@ const NavBar = async () => {
         <Image
           src={session?.user?.image}
           alt="user profile image"
-          width={70}
-          height={100}
+          width={50}
+          height={50}
           className="rounded-full"
         />
       </button>
