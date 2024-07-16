@@ -25,7 +25,7 @@ const CarsFiltersOption = () => {
           <option>Honda</option>
           <option>Nissan</option>
           <option>BMW</option>
-          <option>Mercedes Benz</option>
+          <option>Mercedes-Benz</option>
           <option>Audi</option>
         </select>
       </div>
