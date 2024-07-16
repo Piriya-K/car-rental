@@ -20,7 +20,7 @@ const NavBar = async () => {
           Contact Us
         </h2>
       </div>
-      <button>
+      {/* <button>
         <Image
           src={session ? (session!.user!.image as string) : ""}
           alt="user profile image"
@@ -28,7 +28,7 @@ const NavBar = async () => {
           height={50}
           className="rounded-full"
         />
-      </button>
+      </button> */}
     </div>
   );
 };
