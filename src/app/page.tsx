@@ -13,6 +13,7 @@ export default function Home() {
   // console.log(session);
 
   const [cars, setCars] = useState<any>([]);
+  const [originalList, setOriginalList] = useState<any>([]);
 
   useEffect(() => {
     carList();
@@ -21,13 +22,27 @@ export default function Home() {
   const carList = async () => {
     const result: any = await getCarList();
     setCars(result?.carLists);
+    setOriginalList(result?.carLists);
+  };
+
+  const filterCarList = async (propBrand: String) => {
+    var filteredList: any;
+    propBrand === "Brand"
+      ? (filteredList = originalList)
+      : (filteredList = originalList.filter(
+          (item: any) => item.brand == propBrand
+        ));
+    setCars(filteredList);
   };
 
   return (
     <div className="p-5 sm:px-10 md:px-20">
       <Hero />
       <SearchInput />
-      <CarsFiltersOption />
+      <CarsFiltersOption
+        prop={originalList}
+        setBrand={(brand: String) => filterCarList(brand)}
+      />
       <CarsList cars={cars} />
     </div>
   );

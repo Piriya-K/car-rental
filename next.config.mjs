@@ -9,8 +9,8 @@ const nextConfig = {
         pathname:
           "/a/ACg8ocKovoP97yOyRAitt8S8Tl4krUHLR02-280vUOJQ0LhF9csCaw=s96-c",
       },
+      { protocol: "https", hostname: "ca-central-1.graphassets.com" },
     ],
-    domains: ["ca-central-1.graphassets.com"],
   },
 };
 

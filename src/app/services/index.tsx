@@ -20,7 +20,7 @@ export const getCarList = async () => {
     }
   `;
 
-  const result = await request(endpoint, query);
+  const result = (await request(endpoint, query)) as { carLists?: any };
 
   return result;
 };
