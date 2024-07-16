@@ -1,24 +1,30 @@
 import React, { useState, useEffect } from "react";
 
-const CarsFiltersOption = ({ prop, setBrand }: any) => {
+const CarsFiltersOption = ({ prop, setBrandAndSort }: any) => {
   const [brandList, setBrandList] = useState<any>();
 
-  const brandSet = new Set(); // A 'Set' object is used to store unqiue values of any type.
+  const brandSet = new Set();
 
   useEffect(() => {
     prop ? brandFilter() : console.log(`nothing added`);
   }, [prop]);
 
   const brandFilter = () => {
-    // Adding the car brand into the 'Set' object by passing each object in the prop array into a for each that contains an add method.
     prop.forEach((element: any) => {
       brandSet.add(element.brand);
     });
 
-    // console.log(brandSet);
-
-    //Set the brandList by passing into it an array that is created from the brandSet object.
     setBrandList(Array.from(brandSet));
+  };
+
+  const handleChange = () => {
+    const sortOrder = document.querySelector('select[name="sortOrder"]') as any;
+    const sortOrderValue = sortOrder?.value;
+    console.log(sortOrderValue);
+    const brand = document.querySelector('select[name="brand"]') as any;
+    const brandValue = brand?.value;
+    console.log(brandValue);
+    setBrandAndSort(brandValue, sortOrderValue);
   };
 
   return (
@@ -29,18 +35,26 @@ const CarsFiltersOption = ({ prop, setBrand }: any) => {
       </div>
 
       <div className="sm:flex space-x-2">
-        <select className="select select-bordered min-sm:w-full max-w-xs">
-          <option defaultValue="Price">Price</option>
-          <option>Min. - Max.</option>
-          <option>Max. - Min.</option>
-        </select>
         <select
           className="select select-bordered min-sm:w-full max-w-xs"
-          onChange={(e) => setBrand(e.target.value)}
+          name="sortOrder"
+          onChange={handleChange}
         >
-          <option defaultValue="Brand">Brand</option>
-          {brandList?.map((brand: String, index: number) => (
-            <option key={index}>{brand}</option>
+          <option value="Price">Price</option>
+          <option value="-1">Min. - Max.</option>
+          <option value="1">Max. - Min.</option>
+        </select>
+
+        <select
+          className="select select-bordered min-sm:w-full max-w-xs"
+          name="brand"
+          onChange={handleChange}
+        >
+          <option value="Brand">Brand</option>
+          {brandList?.map((brand: string, index: number) => (
+            <option key={index} value={brand}>
+              {brand}
+            </option>
           ))}
         </select>
       </div>

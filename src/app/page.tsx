@@ -16,23 +16,46 @@ export default function Home() {
   const [originalList, setOriginalList] = useState<any>([]);
 
   useEffect(() => {
-    carList();
+    const fetchCarList = async () => {
+      try {
+        const result: any = await getCarList();
+        setCars(result?.carLists);
+        setOriginalList(result?.carLists);
+      } catch (error) {
+        console.error("Error fetching car list:", error);
+      }
+    };
+    fetchCarList();
   }, []);
 
-  const carList = async () => {
-    const result: any = await getCarList();
-    setCars(result?.carLists);
-    setOriginalList(result?.carLists);
-  };
+  const setBrandAndSort = (name: String, value: number | String) => {
+    console.log(`name is ${name}`);
+    console.log(`value is ${value}`);
+    let filteredList;
+    let sortedData;
 
-  const filterCarList = async (propBrand: String) => {
-    var filteredList: any;
-    propBrand === "Brand"
-      ? (filteredList = originalList)
-      : (filteredList = originalList.filter(
-          (item: any) => item.brand == propBrand
-        ));
-    setCars(filteredList);
+    if (name === "Brand") {
+      filteredList = originalList;
+      if (value === "Price") {
+        sortedData = filteredList;
+      } else {
+        sortedData = [...filteredList].sort((a, b) =>
+          value == -1 ? a.price - b.price : b.price - a.price
+        );
+      }
+    } else {
+      filteredList = originalList;
+      filteredList = originalList.filter((item: any) => item.brand == name);
+      if (value === "Price") {
+        sortedData = filteredList;
+      } else {
+        sortedData = [...filteredList].sort((a, b) =>
+          value == -1 ? a.price - b.price : b.price - a.price
+        );
+      }
+    }
+
+    setCars(sortedData);
   };
 
   return (
@@ -41,7 +64,7 @@ export default function Home() {
       <SearchInput />
       <CarsFiltersOption
         prop={originalList}
-        setBrand={(brand: String) => filterCarList(brand)}
+        setBrandAndSort={setBrandAndSort}
       />
       <CarsList cars={cars} />
     </div>
