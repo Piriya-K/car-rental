@@ -22,7 +22,7 @@ const NavBar = async () => {
       </div>
       <button>
         <Image
-          src={session!.user!.image as string}
+          src={session ? (session!.user!.image as string) : ""}
           alt="user profile image"
           width={50}
           height={50}
@@ -34,4 +34,3 @@ const NavBar = async () => {
 };
 
 export default NavBar;
-  
