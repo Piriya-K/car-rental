@@ -10,6 +10,7 @@ const nextConfig = {
           "/a/ACg8ocKovoP97yOyRAitt8S8Tl4krUHLR02-280vUOJQ0LhF9csCaw=s96-c",
       },
     ],
+    domains: ["ca-central-1.graphassets.com"],
   },
 };
 

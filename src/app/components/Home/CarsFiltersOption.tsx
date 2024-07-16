@@ -10,22 +10,18 @@ const CarsFiltersOption = () => {
 
       <div className="sm:flex space-x-2">
         <select className="select select-bordered min-sm:w-full max-w-xs">
-          <option disabled selected>
-            Price
-          </option>
+          <option defaultValue="Price">Price</option>
           <option>Min. - Max.</option>
           <option>Max. - Min.</option>
         </select>
         <select className="select select-bordered min-sm:w-full max-w-xs">
-          <option disabled selected>
-            Brand
-          </option>
+          <option defaultValue="Brand">Brand</option>
           <option>Toyota</option>
           <option>Mazda</option>
           <option>Honda</option>
           <option>Nissan</option>
           <option>BMW</option>
-          <option>Mercedes-Benz</option>
+          <option>Mercedes</option>
           <option>Audi</option>
         </select>
       </div>

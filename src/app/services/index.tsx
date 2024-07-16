@@ -13,6 +13,9 @@ export const getCarList = async () => {
         price
         seat
         transmission
+        image {
+          url
+        }
       }
     }
   `;
