@@ -27,7 +27,7 @@ border-blue-500 "
         </h2>
         <div className="flex justify-center">
           <Image
-            src={car.image[0].url}
+            src={car!.image[0]!.url as string}
             alt={car.name}
             width={220}
             height={200}
