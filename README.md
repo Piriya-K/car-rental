@@ -1,5 +1,7 @@
 # Car Rental App
 
+This is currently an on-going project.
+
 ## Project Description
 
 This is a car-rental application.
